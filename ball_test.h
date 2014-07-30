@@ -1,3 +1,6 @@
+/*
+ * (c) 30.07.2014 Martin Hünniger
+ */
 #ifndef BALL_TEST_H
 #define BALL_TEST_H
 

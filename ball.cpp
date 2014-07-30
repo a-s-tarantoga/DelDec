@@ -1,6 +1,5 @@
-/* Representation of the moving balls
- *
- * Martin Huenniger 20.05.2010
+/*
+ * (c) 30.07.2014 Martin Hünniger
  */
 
 #ifndef BALL_CPP

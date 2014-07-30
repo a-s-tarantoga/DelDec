@@ -1,3 +1,6 @@
+/*
+ * (c) 30.07.2014 Martin Hünniger
+ */
 #ifndef DELAUNAYDECOMPOSITION_H
 #define DELAUNAYDECOMPOSITION_H
 

@@ -1,3 +1,6 @@
+/*
+ * (c) 30.07.2014 Martin Hünniger
+ */
 #ifndef HELPER_H
 #define HELPER_H
 

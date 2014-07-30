@@ -1,3 +1,7 @@
+/*
+ * (c) 30.07.2014 Martin Hünniger
+ */
+
 #include <iostream>
 #include "delaunaydecomposition.h"
 #include "io.h"
@@ -7,7 +11,7 @@
 
 #include <ctime>
 
-static const int dim = 3;
+static const int dim = 16;
 
 typedef DD::DelaunayDecomposition<dim,double> delaunay_type;
 typedef delaunay_type::point_type           point_type;
@@ -39,10 +43,10 @@ void print_usage( int argc, char** argv ) {
 
 int main(int argc, char** argv)
 {
-    if(argc != 2) print_usage();
+    if(argc != 2) print_usage(argc,argv);
 
-    unsigned long num_points
-    point_list_type points = generate_points(dim,40000);
+    unsigned long num_points = atoi(argv[1]);
+    point_list_type points = generate_points(dim, num_points);
 
 //    std::string filename("/Users/pirx/Desktop/datapoints2d.txt");
 //    std::string testfilename("/Users/pirx/data_for_delaunay.txt");
@@ -50,7 +54,8 @@ int main(int argc, char** argv)
 
     delaunay_type d(points);
 
-    std::cout << d << std::endl;
+    std::cout << "Generated the points" << std::endl;
+    std::cout << "Now computing the Delaunay decomposition" << std::endl;
     clock_t begin = std::clock();
     d.compute();
     clock_t end = std::clock();

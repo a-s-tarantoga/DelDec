@@ -1,8 +1,5 @@
-/* Simple point class
- *
- * Derived from MArtin Kutz, Kaspar Fischer
- *
- * Martin Hünniger 07.04.2010
+/*
+ * (c) 30.07.2014 Martin Hünniger
  */
 
 #ifndef FC_POINT_H

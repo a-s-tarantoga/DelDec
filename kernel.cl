@@ -1,4 +1,9 @@
 /*
+ * (c) 30.07.2014 Martin Hünniger
+ */
+
+
+/*
  * Compute the following formula:
  *
  *       ||p_i||^2 - ||p_j||^2 + 2< x, p_j-p_i >

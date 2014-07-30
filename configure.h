@@ -1,8 +1,5 @@
-/* Switches to adapt the code
- *
- * based on code by Martin Kutz and Kaspar Fischer
- *
- * Martin Huenniger 07.04.2010
+/*
+ * (c) 30.07.2014 Martin Hünniger
  */
 
 #ifndef FC_CONFIGURE_H

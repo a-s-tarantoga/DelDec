@@ -1,3 +1,6 @@
+/*
+ * (c) 30.07.2014 Martin Hünniger
+ */
 #ifndef SUBSPAN_TEST_H
 #define SUBSPAN_TEST_H
 

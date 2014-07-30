@@ -1,3 +1,6 @@
+/*
+ * (c) 30.07.2014 Martin Hünniger
+ */
 #ifndef POINT_TEST_H
 #define POINT_TEST_H
 

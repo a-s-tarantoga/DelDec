@@ -1,8 +1,6 @@
-/* class representing the affine hull of a point set
- *
- * ripped from Martin Kutz and Kaspar Fischer
- *
- * Martin Huenniger 07.04.2010
+/*
+ * copied from Martin Kutz and Kaspar Fischer
+ * augmented by Martin Hünniger 30.07.2014
  */
 
 #ifndef SUBSPAN_CPP
