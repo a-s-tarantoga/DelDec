@@ -153,6 +153,11 @@ public: // Access
     void print_center() const {
         QR->print_center();
     }
+
+    void print_driver() const {
+        QR->print_driver();
+    }
+
     void print_matrices( int i ) const
     // Prints all the matrices that represent the ball
     // 0 - print the center

@@ -13,6 +13,16 @@ Float sqr( Float a ) {
     return a*a;
 }
 
+template <typename T>
+int sgn(T val) {
+    return (T(0) < val) - (val < T(0));
+}
+
+template <typename T>
+int pos_neg(T val) {
+    return (T(0) <= val) ? 1 : -1;
+}
+
 template<typename T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& v) {
     os << "[ ";

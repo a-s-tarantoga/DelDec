@@ -7,7 +7,7 @@
 
 #include <ctime>
 
-static const int dim = 10;
+static const int dim = 3;
 
 typedef DD::DelaunayDecomposition<dim,double> delaunay_type;
 typedef delaunay_type::point_type           point_type;
@@ -30,12 +30,23 @@ point_list_type generate_points(int dim, int num) {
     return points;
 }
 
-int main()
-{
-    point_list_type points = generate_points(dim,30);
+void print_usage( int argc, char** argv ) {
+    std::cout << "Usage:\n"
+              << argv[0] << " <num_points>\n"
+              << "num_points is the number of points randomly generated in " << dim <<"D ambient space.\n";
+    exit(-1);
+}
 
-    std::string filename("/Users/pirx/Desktop/datapoints2d.txt");
-    std::string testfilename("/Users/pirx/data_for_delaunay.txt");
+int main(int argc, char** argv)
+{
+    if(argc != 2) print_usage();
+
+    unsigned long num_points
+    point_list_type points = generate_points(dim,40000);
+
+//    std::string filename("/Users/pirx/Desktop/datapoints2d.txt");
+//    std::string testfilename("/Users/pirx/data_for_delaunay.txt");
+//    delaunay_type D(filename);
 
     delaunay_type d(points);
 
@@ -47,9 +58,6 @@ int main()
     std::cout << "Number of simplices: " << d.num_simplices() << std::endl;
     std::cout << "Computed in: " << double(end-begin) / CLOCKS_PER_SEC << "s\n";
 
-//    std::ofstream file(testfilename);
-//    print_point_list(file,d);
-//    file.close();
     return 0;
 }
 

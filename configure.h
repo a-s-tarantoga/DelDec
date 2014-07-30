@@ -27,8 +27,8 @@
                                 // ended a computation
 //#define USE_MPI
 #define USE_SSE
-#define USE_OPENCL
-#define USE_THREADS
+//#define USE_OPENCL
+//#define USE_THREADS
 //#define USE_OPT
 //#define SAVE_MORE_MEMORY     // lets the workers compress the subspan
 //#define SLIM_INFINITY        // enables the deletion of redundant

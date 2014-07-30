@@ -262,27 +262,11 @@ void Subspan<dim,Float>::remove_point( const size_type local_index ) {
 
 template<int dim,typename Float>
 Float Subspan<dim,Float>::update_driver() {
-    ON_DEBUG(std::cout << "Old driver: [ ";
-            for(auto i=0; i<dim;++i)
-                std::cout << d[i] << " ";
-            std::cout << "]\n");
-
     Float length_squared = project_point_onto_span( x, d );
-
-    ON_DEBUG(std::cout << "New driver: [ ";
-            for(auto i=0; i<dim;++i)
-                std::cout << d[i] << " ";
-            std::cout << "]\n");
-
     Float length = sqrt( length_squared );
+
     for( size_type i=0; i<dim; ++i )
         d[i] = d[i] / length;
-
-    ON_DEBUG(std::cout << "New driver (normalized): [ ";
-            for(auto i=0; i<dim;++i)
-                std::cout << d[i] << " ";
-            std::cout << "]\n");
-
     return length_squared;
 
 }
@@ -306,8 +290,6 @@ template<int dim,typename Float>
 void Subspan<dim,Float>::update_miniball_center()
 {
     ASSERT( r <= dim );
-
-    ON_DEBUG(std::cout << "== computing new center ==\n");
 
     for( size_type j=0; j<r; ++j ) {
         for( size_type i=0; i<dim; ++i ) {
@@ -373,6 +355,21 @@ const Float Subspan<dim,Float>::project_point_onto_span( RandomAccessIterator1 p
     return inner_product( w, w+dim, w, Float(0.0) );
 }
 
+/**
+ * @brief Subspan<dim, Float>::find_affine_coefficients
+ * We compute the coefficients by backsubstitution. Notice that
+ *
+ *   c = \sum_{ i\in M } \lambda_i * (point_list[i] - origin[i])
+ *     = \sum_{ i\in M } \lambda_i * point_list[i] + (1-s) origin[i]
+ * where
+ *
+ *   s = \sum_{ i\in M } \lambda_i
+ *
+ * We compute the coefficient (1-s) of the origin in the value origin_lambda:
+ * @param p
+ * @param lambdas
+ */
+
 template<int dim,typename Float>
 template<typename RandomAccessIterator1,
          typename RandomAccessIterator2>
@@ -391,17 +388,7 @@ void Subspan<dim,Float>::find_affine_coefficients( RandomAccessIterator1 p,
             w[i] += Q[i][k] * u[k];
         }
     }
-
-    // We compute the coefficients by backsubstitution. Notice that
-    //
-    //   c = \sum_{ i\in M } \lambda_i * (point_list[i] - origin[i])
-    //     = \sum_{ i\in M } \lambda_i * point_list[i] + (1-s) origin[i]
-    // where
-    //
-    //   s = \sum_{ i\in M } \lambda_i
-    //
-    // We compute the coefficient (1-s) of the origin in the value origin_lambda:
-
+    // do the backsubstitution
     Float origin_lambda = 1.0;
     for( int j = int(r)-1; j>=0; --j ) {
         for( size_type k = j+1; k<r; ++k ) {

@@ -140,9 +140,16 @@ public: // access
     void print_matrices( int i ) const;
 
     void print_center() const {
-        std::cout << "center: [ ";
+        std::cout << "[ ";
         for(auto i=0; i<dim; ++i) {
             std::cout << x[i] << " ";
+        }
+        std::cout << "]\n";
+    }
+    void print_driver() const {
+        std::cout << "[ ";
+        for(auto i=0; i<dim; ++i) {
+            std::cout << d[i] << " ";
         }
         std::cout << "]\n";
     }
